@@ -52,16 +52,15 @@ document.querySelector('#calcular-mayor').onclick = function(){
 
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
 
-// document.querySelector('#calcular-frecuente').onclick = function(){
-//     let sumador;
-//     for (let i = 0; i < $valoresNumericos.length; i++){
-//         for (let j = 1; j < $valoresNumericos.length; j++) {
-//             if (Number($valoresNumericos[i].textContent) === Number($valoresNumericos[j].textContent)){
-//                 console.log(Number($valoresNumericos[i].textContent))
-//                 sumador++; 
-//             }
-//         }
-//     }
-
-//     return false;
-// }
+document.querySelector('#calcular-frecuente').onclick = function(){
+    let masFrecuente;
+    for (let i = 0; i < $valoresNumericos.length; i++){
+        for (let j = i +1; j < $valoresNumericos.length; j++) {
+            if (Number($valoresNumericos[i].textContent) === Number($valoresNumericos[j].textContent)){
+                    masFrecuente = Number($valoresNumericos[i].textContent);
+            }
+        }
+    }
+    document.querySelector('em').textContent = `El número más frecuente es ${masFrecuente}`;
+    return false;
+}
