@@ -10,17 +10,38 @@ Desafío de programación #1: Imprimí los números del 1 al 10
 
  Resultado: 10 9 8 7 6 5 4 3 2 1
 
+*/
+
+// for (i = 1; i <= 10; i++){
+//   console.log(i);
+// }
+
+/*
+
  Desafìo de programación  #2: Imprimí los números impares del 1 al 100
 
  1 3 5 ... 99
+*/
 
+// for (i = 1; i <= 100; i++){
+//   console.log(i);
+// }
+
+/*
 Desafío de programación #3: Imprimí la tabla de multiplicación del 7
 
  7x0 = 0
  7x1 = 7
  ...
  7x9 = 63
+*/
+// let resultadoMultiplicacion;
+// for (i = 0; i <= 9; i++){
+//     ResultadoMultiplicacion = 7 * i;
+//     console.log(`7 x ${i} = ${ResultadoMultiplicacion}`);
+// }
 
+/*
 Desafío de programación #4: Imprimí todas las tablas de multiplicación del 1 al 9
 
  1x0 = 0
@@ -32,24 +53,90 @@ Desafío de programación #4: Imprimí todas las tablas de multiplicación del 1
  ...
  ...
  9x9 = 81
+*/
 
+// let resultado;
+// const primerFactor = [1, 2, 3, 4, 5, 6, 7, 8, 9, 15]; // sirve para agregar mas tablas de ser necesario
+// for (let i = 0; i < primerFactor.length; i++) {
+// const segundoFactor = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+//   for (let j = 0; j < segundoFactor.length; j++){
+//     resultado = primerFactor[i] * segundoFactor[j];
+//     console.log(`El resultado de ${primerFactor[i]} x ${segundoFactor[j]} es ${resultado}`) 
+//   }
+// }
+
+
+/*
 Desafío de programación #5: Calcula el resultado de la suma de los numeros del 1 al 10 en un array.
  [1,2,3,4,5,6,7,8,9,10]
 
  1 + 2 + 3 + ... + 10 = ? //hacerlo con un array y un bucle
+*/
+// let suma = 0;
+// const numerosParaSumar = [1,2,3,4,5,6,7,8,9,10];
+// for (let i = 0 ; i < numerosParaSumar.length ; i++){
+//     suma = suma + numerosParaSumar[i];
+// }
+// console.log(suma);
 
+/*
 Desafío de programación #6: Calcula 10! (10 factorial)
 
  10 * 9 * 8 * ... * 1
+*/
 
+// let factorial = 10;
+// for (let i = 9 ; i > 0 ; i--){
+//     factorial = factorial * i
+// }
+// console.log(factorial);
+
+/*
 Desafío de programación #7: Calcula la suma de todos los números impares mayores que 10 y menores que 30
+*/
 
+// let sumador = 0;
+// for (let i = 11 ; i < 20 ; i++){
+//   sumador = sumador+i;
+// }
+// console.log(sumador);
+
+/*
 Desafío de programación #8: Crea una función que convierta de Celsius a Fahrenheit
+*/
+let input;
+function preguntarInput(){
+  input = Number(prompt('Ingresá los grados Celsius:'));
 
+  if (isNaN(input)){
+    alert('No ingresaste un número.');
+    preguntarInput();
+  } else {
+    celsiusToFahrenheit(input);
+    return;
+  }
+}
+preguntarInput();
+
+function celsiusToFahrenheit(degreeCelsius){
+  let degreeFahrenheit = (degreeCelsius * 1.8) + 32;
+  return degreeFahrenheit;
+}
+
+alert(`${input} °C son ${degreeFahrenheit} °F.`)
+
+/*
 Desafío de programación #9: Crea una función que convierta de Fahrenheit a Celsius
+*/
 
+
+/*
 Desafío de programación #10: Calcula la suma de todos los números en un array de números
+*/
 
+
+
+/*
 Desafío de programación #11: Calcula el promedio de todos los números en un array de números. (en una función)
 
 Desafío de programación #12: Crea una función que reciba un array de números y devuelva un array conteniendo solo los números positivos
