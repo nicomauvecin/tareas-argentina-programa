@@ -62,6 +62,7 @@ document.querySelector('#boton-calcular').onclick = function(event){
 
     let $resultados = document.querySelector('#resultados');
     $resultados.innerText = `El menor tiene ${calcularMenor($edadIntegrantes)}, el mayor ${calcularMayor($edadIntegrantes)} y el promedio de edad es de ${calcularPromedio($edadIntegrantes)}`;
+    mostrarResultados();
     return false;
 }
 
@@ -90,10 +91,21 @@ function ocultarBotonReiniciar(){
     $botonReiniciar.className= 'oculto';    
 }
 
+function mostrarResultados(){
+    const $resultados = document.querySelector('#resultados');
+    $resultados.className = '';
+}
+
+function ocultarResultados(){
+    const $resultados = document.querySelector('#resultados');
+    $resultados.className = 'oculto';
+}
+
 function reset(){
     ocultarBotonCalcular();
     ocultarBotonReiniciar();
     borrarElementosAnteriores();
+    ocultarResultados();
 
     return false;
 }
