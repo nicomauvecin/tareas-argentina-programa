@@ -10,6 +10,8 @@ document.querySelector('#boton-enviar').onclick = function(event){
 
     const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
     const cantidadIntegrantes = Number($cantidadIntegrantes.value);
+    const $botonCalcular = document.querySelector('#boton-calcular');
+    $botonCalcular.className = '';
 
     borrarElementosAnteriores();
     crearElementos(cantidadIntegrantes);
@@ -17,7 +19,7 @@ document.querySelector('#boton-enviar').onclick = function(event){
 }
 
 function borrarElementosAnteriores(){
-    const $integrantesFamiliares = document.querySelectorAll('.integrante');
+    const $integrantesFamiliares = document.querySelectorAll('.integrantes');
     for (let i = 0; i < $integrantesFamiliares.length; i++) {
         $integrantesFamiliares[i].remove();
     }
@@ -31,13 +33,14 @@ function crearElementos(cantidadIntegrantes){
 
 function crearElemento(indice){
     const $div = document.createElement('div');
-    $div.className = 'integrante';
+    $div.className = 'integrantes';
 
     const $label = document.createElement('label');
     $label.textContent = 'Ingresá la edad del integrante n° ' + (indice+1);
 
     const $input = document.createElement('input');
     $input.type = 'number';
+    $input.className = 'integrante'
  
     $div.appendChild($label);
     $div.appendChild($input);
@@ -46,4 +49,11 @@ function crearElemento(indice){
     $contenedor.appendChild($div);
 }
 
+document.querySelector('#boton-calcular').onclick = function(event){
 
+    const $edadIntegrantes = document.querySelectorAll('.integrante');
+
+    let $resultados = document.querySelector('#resultados');
+    $resultados.innerText = `El menor tiene ${calcularMenor($edadIntegrantes)}, el mayor ${calcularMayor($edadIntegrantes)} y el promedio de edad es de ${calcularPromedio($edadIntegrantes)}`;
+    return false;
+}
