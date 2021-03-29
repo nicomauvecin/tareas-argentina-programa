@@ -10,8 +10,6 @@ document.querySelector('#boton-enviar').onclick = function(event){
 
     const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
     const cantidadIntegrantes = Number($cantidadIntegrantes.value);
-    const $botonCalcular = document.querySelector('#boton-calcular');
-    $botonCalcular.className = '';
 
     borrarElementosAnteriores();
     crearElementos(cantidadIntegrantes);
@@ -26,8 +24,17 @@ function borrarElementosAnteriores(){
 }
 
 function crearElementos(cantidadIntegrantes){
-    for (let i = 0; i < cantidadIntegrantes; i++) {
-        crearElemento(i);       
+    if (cantidadIntegrantes > 1){
+        mostrarBotonReiniciar();
+        mostrarBotonCalcular();
+
+        for (let i = 0; i < cantidadIntegrantes; i++) {
+            crearElemento(i);       
+        }
+
+
+    } else{
+        reset();
     }
 }
 
@@ -55,5 +62,38 @@ document.querySelector('#boton-calcular').onclick = function(event){
 
     let $resultados = document.querySelector('#resultados');
     $resultados.innerText = `El menor tiene ${calcularMenor($edadIntegrantes)}, el mayor ${calcularMayor($edadIntegrantes)} y el promedio de edad es de ${calcularPromedio($edadIntegrantes)}`;
+    return false;
+}
+
+document.querySelector('#boton-reiniciar').onclick = function(){
+    reset();
+    return false;
+}
+
+function mostrarBotonCalcular(){
+    const $botonCalcular = document.querySelector('#boton-calcular');
+    $botonCalcular.className = '';
+}
+
+function ocultarBotonCalcular(){
+    const $botonCalcular = document.querySelector('#boton-calcular');
+    $botonCalcular.className = 'oculto';
+}
+
+function mostrarBotonReiniciar(){
+    const $botonReiniciar = document.querySelector('#boton-reiniciar');
+    $botonReiniciar.className= '';
+}
+
+function ocultarBotonReiniciar(){
+    const $botonReiniciar = document.querySelector('#boton-reiniciar');
+    $botonReiniciar.className= 'oculto';    
+}
+
+function reset(){
+    ocultarBotonCalcular();
+    ocultarBotonReiniciar();
+    borrarElementosAnteriores();
+
     return false;
 }
