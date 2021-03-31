@@ -17,27 +17,37 @@ document.querySelector('#boton-enviar').onclick = function(event){
 }
 
 function borrarElementosAnteriores(){
-    const $integrantesFamiliares = document.querySelectorAll('.integrante');
+    const $integrantesFamiliares = document.querySelectorAll('.integrantes');
     for (let i = 0; i < $integrantesFamiliares.length; i++) {
         $integrantesFamiliares[i].remove();
     }
 }
 
 function crearElementos(cantidadIntegrantes){
-    for (let i = 0; i < cantidadIntegrantes; i++) {
-        crearElemento(i);       
+    if (cantidadIntegrantes > 1){
+        mostrarBotonReiniciar();
+        mostrarBotonCalcular();
+
+        for (let i = 0; i < cantidadIntegrantes; i++) {
+            crearElemento(i);       
+        }
+
+
+    } else{
+        reset();
     }
 }
 
 function crearElemento(indice){
     const $div = document.createElement('div');
-    $div.className = 'integrante';
+    $div.className = 'integrantes';
 
     const $label = document.createElement('label');
     $label.textContent = 'Ingresá la edad del integrante n° ' + (indice+1);
 
     const $input = document.createElement('input');
     $input.type = 'number';
+    $input.className = 'integrante'
  
     $div.appendChild($label);
     $div.appendChild($input);
@@ -46,12 +56,56 @@ function crearElemento(indice){
     $contenedor.appendChild($div);
 }
 
-/*
-TAREA:
-Crear una interfaz que permita agregar ó quitar (botones agregar y quitar) inputs+labels para completar el salario anual de cada integrante de la familia que trabaje.
-Al hacer click en "calcular", mostrar en un elemento pre-existente el mayor salario anual, menor salario anual, salario anual promedio y salario mensual promedio.
+document.querySelector('#boton-calcular').onclick = function(event){
 
-Punto bonus: si hay inputs vacíos, ignorarlos en el cálculo (no contarlos como 0).
-*/
+    const $edadIntegrantes = document.querySelectorAll('.integrante');
 
+    let $resultados = document.querySelector('#resultados');
+    $resultados.innerText = `El menor tiene ${calcularMenor($edadIntegrantes)}, el mayor ${calcularMayor($edadIntegrantes)} y el promedio de edad es de ${calcularPromedio($edadIntegrantes)}`;
+    mostrarResultados();
+    return false;
+}
 
+document.querySelector('#boton-reiniciar').onclick = function(){
+    reset();
+    return false;
+}
+
+function mostrarBotonCalcular(){
+    const $botonCalcular = document.querySelector('#boton-calcular');
+    $botonCalcular.className = '';
+}
+
+function ocultarBotonCalcular(){
+    const $botonCalcular = document.querySelector('#boton-calcular');
+    $botonCalcular.className = 'oculto';
+}
+
+function mostrarBotonReiniciar(){
+    const $botonReiniciar = document.querySelector('#boton-reiniciar');
+    $botonReiniciar.className= '';
+}
+
+function ocultarBotonReiniciar(){
+    const $botonReiniciar = document.querySelector('#boton-reiniciar');
+    $botonReiniciar.className= 'oculto';    
+}
+
+function mostrarResultados(){
+    const $resultados = document.querySelector('#resultados');
+    $resultados.className = '';
+}
+
+function ocultarResultados(){
+    const $resultados = document.querySelector('#resultados');
+    $resultados.className = 'oculto';
+}
+
+function reset(){
+    ocultarBotonCalcular();
+    ocultarBotonReiniciar();
+    borrarElementosAnteriores();
+    ocultarResultados();
+
+    return false;
+}
