@@ -1,7 +1,7 @@
 
 
 function calcularMenor(edadIntegrantes){
-    let menorNumero = edadIntegrantes[0].value;
+    let menorNumero = Number(edadIntegrantes[0].value);
 
     for (let i = 0; i < edadIntegrantes.length; i++) {
         if (menorNumero > edadIntegrantes[i].value){
@@ -13,7 +13,7 @@ function calcularMenor(edadIntegrantes){
 }
 
 function calcularMayor(edadIntegrantes){
-    let mayorNumero = edadIntegrantes[0].value;
+    let mayorNumero = Number(edadIntegrantes[0].value);
     for (let i = 0; i < edadIntegrantes.length; i++){
         if (mayorNumero < edadIntegrantes[i].value){
             mayorNumero = edadIntegrantes[i].value;
