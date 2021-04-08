@@ -13,6 +13,9 @@ document.querySelector('#boton-enviar').onclick = function(){
 }
 
 function validarCantidadIntegrantes(integrantes){
+    if (integrantes === ''){
+        return 'El campo integrantes no puede estar vacío.';
+    }
     if (integrantes === 0){
         return 'El campo integrantes no puede estar vacío.';
     }
